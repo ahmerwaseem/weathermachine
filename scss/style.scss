@@ -1,0 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+
+$main-color: blue;
+$main-font: Roboto, Verdana, Sans Serif;
+
+body{
+  font-family: $main-font;
+  background: $main-color;
+}
+
+.jumbotron{
+  height: 250px;
+  margin:auto;
+  margin-top: 25px;
+  width: 750px;
+}
+
+#system{
+text-align:right;
+}
+#city,#wind,#temp{
+  font-size:25px;
+}
