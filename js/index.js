@@ -8,11 +8,11 @@ function getLocation(){
   if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(geoSuccess, error);
 }
-  else
-    {
-      $("#notFound").html("<div>Please enter location! I'll try my best!</div><input type=text placeholder='Enter here' id='location'></input><button id='search'>Submit</button>");
-            document.getElementById('search').addEventListener("click",function()   {getDataCity(document.getElementById('location').value);});
-    }
+  //else
+  //  {
+  //    $("#notFound").html("<div>Please enter location! I'll try my best!</div><input type=text placeholder='Enter here' id='location'></input><button id='search'>Submit</button>");
+  //          document.getElementById('search').addEventListener("click",function()   {getDataCity(document.getElementById('location').value);});
+   // }
   
 };
 
@@ -27,9 +27,6 @@ function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
        $("#notFound").html("<div>Please enter location! I'll try my best!</div><input type=text placeholder='Enter here' id='location'></input><button id='search'>Submit</button>");
             document.getElementById('search').addEventListener("click",function()   {getDataCity(document.getElementById('location').value);});
-    
-  
-  
 };
 
 function getData(){
@@ -67,8 +64,7 @@ function processData(data){
     document.getElementById("temp").innerHTML= tempC + ' ' + tempCsym ;  
     document.getElementById("city").innerHTML= data["name"];
     document.getElementById("coords").innerHTML = "[" + data["coord"]["lat"].toFixed(5) + "][" + data["coord"]["lon"].toFixed(5) + "]";
-    document.getElementById("wind")
-      .innerHTML= data["wind"]["speed"] + " mph"; 
+    document.getElementById("wind").innerHTML= data["wind"]["speed"] + " mph"; 
  
 
 }
@@ -81,8 +77,7 @@ function convertTemp(){
     isMetric = false;
   }
   else{
-    document.getElementById(
-      "temp").innerHTML = tempC + ' ' + tempCsym;
+    document.getElementById("temp").innerHTML = tempC + ' ' + tempCsym;
     isMetric = true;
   }
 };
