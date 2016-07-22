@@ -1,19 +1,18 @@
 
-
+$(".system").hide();
 getLocation();
-document.getElementById('temp').addEventListener("click",convertTemp);
-
+document.getElementById('metric').addEventListener("click",convert);
+document.getElementById('imperial').addEventListener("click",convert);
+document.getElementById('temp').addEventListener("click",convert);
+document.getElementById('search').addEventListener("click",function(){
+    getDataCity(document.getElementById('location').value);
+ });
 
 function getLocation(){
   if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(geoSuccess, error);
-}
-  //else
-  //  {
-  //    $("#notFound").html("<div>Please enter location! I'll try my best!</div><input type=text placeholder='Enter here' id='location'></input><button id='search'>Submit</button>");
-  //          document.getElementById('search').addEventListener("click",function()   {getDataCity(document.getElementById('location').value);});
-   // }
-  
+} 
+  else error();
 };
 
 function geoSuccess(position){ 
@@ -23,10 +22,9 @@ function geoSuccess(position){
   getData();
 }
 
+
 function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-       $("#notFound").html("<div>Please enter location! I'll try my best!</div><input type=text placeholder='Enter here' id='location'></input><button id='search'>Submit</button>");
-            document.getElementById('search').addEventListener("click",function()   {getDataCity(document.getElementById('location').value);});
+  document.getElementById("temp").innerHTML = "Geolocation Failed. <br> Please input location in search box."
 };
 
 function getData(){
@@ -43,41 +41,43 @@ function getDataCity(location){
     urlBuilder = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?units=metric&q=" +  //address, crossorigin for https to http
    location +
     "&appid=0702c0948da3d42103f274acca388106";
-  console.log("getdataloc");
-  console.log(urlBuilder);
   $.getJSON(urlBuilder,function(data){processData(data);});
 }
 
-function getJSON(urlBuilder){
-   $.getJSON(urlBuilder,function(data){console.log(data);}, error);
-  
-}
-
 function processData(data){
-  tempC = data["main"]["temp"];
-  tempCsym = '&#8451';
-  tempF = (tempC * (9/5) + 32).toFixed(2);
-  tempFsym = '&#8457';
+  tempC = data["main"]["temp"] + '&#8451';
+  tempF = (data["main"]["temp"] * (9/5) + 32).toFixed(2) + '&#8457';
+  coordinates = "[" + data["coord"]["lat"].toFixed(5) + "][" + data["coord"]["lon"].toFixed(5) + "]";
+  cityName = data["name"];
+  windMPH = data["wind"]["speed"] + ' mph';
+  windKPH = (data["wind"]["speed"] * 1.60934).toFixed(2) + ' kph';
+
   isMetric = true;
 
-  
-    document.getElementById("temp").innerHTML= tempC + ' ' + tempCsym ;  
-    document.getElementById("city").innerHTML= data["name"];
-    document.getElementById("coords").innerHTML = "[" + data["coord"]["lat"].toFixed(5) + "][" + data["coord"]["lon"].toFixed(5) + "]";
-    document.getElementById("wind").innerHTML= data["wind"]["speed"] + " mph"; 
- 
+  $(".system").show();
 
+  document.getElementById("city").innerHTML   = cityName;
+  document.getElementById("coords").innerHTML = coordinates; 
+  document.getElementById("wind").innerHTML= windKPH;
+  document.getElementById("temp").innerHTML= tempC;
+
+  $("#metric").addClass("selected");
 }
 
-function convertTemp(){
-  var tempStr =  document.getElementById("temp").innerHTML.split(" ");
-
+function convert(){
   if (isMetric == true){
-    document.getElementById("temp").innerHTML = tempF + ' ' + tempFsym;
+    document.getElementById("wind").innerHTML= windMPH;
+    document.getElementById("temp").innerHTML= tempF;
+      $("#metric").removeClass("selected");
+      $("#imperial").addClass("selected");
     isMetric = false;
   }
   else{
-    document.getElementById("temp").innerHTML = tempC + ' ' + tempCsym;
+    document.getElementById("wind").innerHTML= windKPH;
+    document.getElementById("temp").innerHTML= tempC;
+      $("#imperial").removeClass("selected");
+      $("#metric").addClass("selected");
     isMetric = true;
   }
+
 };

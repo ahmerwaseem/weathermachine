@@ -8,16 +8,26 @@ body{
   background: $main-color;
 }
 
-.jumbotron{
-  height: 250px;
-  margin:auto;
+.jumbotron {
+  height: 300px;
+  margin: auto;
   margin-top: 25px;
-  width: 750px;
+  width: 50%; }
+
+
+#city, #wind, #temp {
+  font-size: 25px; }
+
+#userSearch { text-align: left; }
+
+.system{
+	display: inline-block;
 }
 
-#system{
-text-align:right;
+.selected{
+	font-weight: bold;
 }
-#city,#wind,#temp{
-  font-size:25px;
+
+.system a{
+	margin-right: 5px;
 }
