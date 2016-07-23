@@ -4,24 +4,26 @@ body {
   background: blue; }
 
 .jumbotron {
-  height: 300px;
   margin: auto;
   margin-top: 25px;
   width: 50%; }
 
-#city, #wind, #temp {
+.mainText {
   font-size: 25px; }
+
+.subText {
+  font-size: 15px; }
 
 #userSearch {
   text-align: left; }
 
-.system {
+#system {
   display: inline-block; }
 
 .selected {
   font-weight: bold; }
 
-.system a {
+#system a {
   margin-right: 5px; }
 
 /*# sourceMappingURL=style.css.map */

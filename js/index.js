@@ -3,9 +3,8 @@ $(".system").hide();
 getLocation();
 document.getElementById('metric').addEventListener("click",convert);
 document.getElementById('imperial').addEventListener("click",convert);
-document.getElementById('temp').addEventListener("click",convert);
 document.getElementById('search').addEventListener("click",function(){
-    getDataCity(document.getElementById('location').value);
+getDataCity(document.getElementById('location').value);
  });
 
 function getLocation(){
@@ -24,7 +23,7 @@ function geoSuccess(position){
 
 
 function error(err) {
-  document.getElementById("temp").innerHTML = "Geolocation Failed. <br> Please input location in search box."
+  document.getElementById("error").innerHTML = "Geolocation Failed. <br> Please input location in search box."
 };
 
 function getData(){
@@ -51,17 +50,32 @@ function processData(data){
   cityName = data["name"];
   windMPH = data["wind"]["speed"] + ' mph';
   windKPH = (data["wind"]["speed"] * 1.60934).toFixed(2) + ' kph';
+  img = data["weather"][0]["icon"];
+  descr = capFirstLetter(data["weather"][0]["description"]);
 
   isMetric = true;
-
-  $(".system").show();
+  $("#error").remove();
+  $("#system").removeClass("invisible");
 
   document.getElementById("city").innerHTML   = cityName;
   document.getElementById("coords").innerHTML = coordinates; 
   document.getElementById("wind").innerHTML= windKPH;
   document.getElementById("temp").innerHTML= tempC;
+  document.getElementById("descr").innerHTML = descr;
+  document.getElementById("image").innerHTML = "<img src='http://openweathermap.org/img/w/" + img + ".png'></img>";
 
   $("#metric").addClass("selected");
+}
+
+ function capFirstLetter(descr){
+  descr = descr.split(" ");
+  for (var i=0; i < descr.length; i++){
+    descr[i] = descr[i].split("");
+    descr[i][0] = descr[i][0].toUpperCase();;
+    descr[i] = descr[i].join("");
+  }
+
+return descr.join(" ");
 }
 
 function convert(){

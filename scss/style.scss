@@ -9,25 +9,25 @@ body{
 }
 
 .jumbotron {
-  height: 300px;
   margin: auto;
   margin-top: 25px;
   width: 50%; }
 
-
-#city, #wind, #temp {
+.mainText{
   font-size: 25px; }
 
-#userSearch { text-align: left; }
-
-.system{
-	display: inline-block;
+.subText{
+  font-size: 15px;
 }
 
-.selected{
-	font-weight: bold;
-}
+#userSearch {
+  text-align: left; }
 
-.system a{
-	margin-right: 5px;
-}
+.system {
+  display: inline-block; }
+
+.selected {
+  font-weight: bold; }
+
+.system a {
+  margin-right: 5px; }
