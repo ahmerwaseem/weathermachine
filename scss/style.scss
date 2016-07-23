@@ -1,7 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 
-$main-color: blue;
+$main-color: black;
+$secondary-color: white;
 $main-font: Roboto, Verdana, Sans Serif;
+
 
 body{
   font-family: $main-font;
@@ -11,7 +13,9 @@ body{
 .jumbotron {
   margin: auto;
   margin-top: 25px;
-  width: 50%; }
+  width: 50%;
+  background: $secondary-color;
+ }
 
 .mainText{
   font-size: 25px; }
@@ -21,7 +25,7 @@ body{
 }
 
 #userSearch {
-  text-align: left; }
+}
 
 .system {
   display: inline-block; }

@@ -1,12 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 body {
   font-family: Roboto, Verdana, Sans Serif;
-  background: blue; }
+  background: black; }
 
 .jumbotron {
   margin: auto;
   margin-top: 25px;
-  width: 50%; }
+  width: 50%;
+  background: white; }
 
 .mainText {
   font-size: 25px; }
@@ -14,16 +15,13 @@ body {
 .subText {
   font-size: 15px; }
 
-#userSearch {
-  text-align: left; }
-
-#system {
+.system {
   display: inline-block; }
 
 .selected {
   font-weight: bold; }
 
-#system a {
+.system a {
   margin-right: 5px; }
 
 /*# sourceMappingURL=style.css.map */
