@@ -1,18 +1,21 @@
 
-$(".system").hide();
 getLocation();
 document.getElementById('metric').addEventListener("click",convert);
 document.getElementById('imperial').addEventListener("click",convert);
 document.getElementById('search').addEventListener("click",function(){
-getDataCity(document.getElementById('location').value);
- });
+  getDataCity(document.getElementById('location').value);
+  });
+
+
 
 function getLocation(){
   if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(geoSuccess, error);
-} 
+      navigator.geolocation.getCurrentPosition(geoSuccess, error);
+  } 
   else error();
 };
+
+
 
 function geoSuccess(position){ 
   var crd = position.coords;
@@ -26,22 +29,29 @@ function error(err) {
   document.getElementById("error").innerHTML = "Geolocation Failed. <br> Please input location in search box."
 };
 
+
+
 function getData(){
   urlBuilder = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?units=metric&" +  //address, crossorigin for https to http
-   'lat=' + latVar +  // lat coordinates
-    '&lon=' + lonVar + // lon coordinates 
-    "&appid=0702c0948da3d42103f274acca388106";
-  console.log("getdata");
+                'lat=' + latVar +  // lat coordinates
+                '&lon=' + lonVar + // lon coordinates 
+                "&appid=0702c0948da3d42103f274acca388106";
+
 $.getJSON(urlBuilder,function(data){processData(data);});
   
 }
 
+
+
 function getDataCity(location){
     urlBuilder = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?units=metric&q=" +  //address, crossorigin for https to http
-   location +
-    "&appid=0702c0948da3d42103f274acca388106";
+                  location +
+                  "&appid=0702c0948da3d42103f274acca388106";
+
   $.getJSON(urlBuilder,function(data){processData(data);});
 }
+
+
 
 function processData(data){
   tempC = data["main"]["temp"] + '&#8451';
@@ -50,7 +60,7 @@ function processData(data){
   cityName = data["name"];
   windMPH = data["wind"]["speed"] + ' mph';
   windKPH = (data["wind"]["speed"] * 1.60934).toFixed(2) + ' kph';
-  img = data["weather"][0]["icon"];
+  img = "<img src='http://openweathermap.org/img/w/" + data["weather"][0]["icon"] + ".png'></img>";
   descr = capFirstLetter(data["weather"][0]["description"]);
 
   isMetric = true;
@@ -62,10 +72,12 @@ function processData(data){
   document.getElementById("wind").innerHTML= windKPH;
   document.getElementById("temp").innerHTML= tempC;
   document.getElementById("descr").innerHTML = descr;
-  document.getElementById("image").innerHTML = "<img src='http://openweathermap.org/img/w/" + img + ".png'></img>";
+  document.getElementById("image").innerHTML = img;
 
   $("#metric").addClass("selected");
 }
+
+
 
  function capFirstLetter(descr){
   descr = descr.split(" ");
@@ -74,9 +86,10 @@ function processData(data){
     descr[i][0] = descr[i][0].toUpperCase();;
     descr[i] = descr[i].join("");
   }
-
-return descr.join(" ");
+  return descr.join(" ");
 }
+
+
 
 function convert(){
   if (isMetric == true){
@@ -93,5 +106,4 @@ function convert(){
       $("#metric").addClass("selected");
     isMetric = true;
   }
-
 };

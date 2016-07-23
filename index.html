@@ -1,57 +1,50 @@
 <!DOCTYPE html>
 <html >
+
   <head>
+    
     <meta charset="UTF-8">
     <title>Weather Machine</title>
-    
-    
-    
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
     <link rel="stylesheet" href="css/style.css">
 
-    
-    
   </head>
 
   <body>
-
-    <body>
-<div class="container">
-  <div class="jumbotron text-center">
-   <div id="userSearch">Please enter location: 
-      <div>
-            <input type=text placeholder='Enter here' id='location'></input>
-            <button id='search'>Search</button>  
-      </div>
-    </div>
-    <br>
-    <div class="mainText">
-      <div id="city"></div>
-      <div id="descr"></div>
-        <div class="subText">
-          <div id="image"></div>
-          <div id="coords"></div>
-          <div id="temp"></div>
-          <div id="wind"></div>
-          <div id="error"></div>
+      <div class="container">
+        <div class="jumbotron text-center">
+         <div id="userSearch">Please enter location: 
+            <div>
+                  <input type=text placeholder='Enter here' id='location'></input>
+                  <button id='search'>Search</button>  
+            </div>
+          </div>
+          <br>
+          <div class="mainText">
+            <div id="city"></div>
+            <div id="descr"></div>
+              <div class="subText">
+                <div id="image"></div>
+                <div id="coords"></div>
+                <div id="temp"></div>
+                <div id="wind"></div>
+                <div id="error"></div>
+              </div>
+          </div>
+          <div id="system" class="invisible">
+            <span id="metric"><a>Metric</a></span>
+            <span id="imperial"><a>Imperial</a></span>
+          </div>
         </div>
-    </div>
-    <div id="system" class="invisible">
-      <span id="metric"><a>Metric</a></span>
-      <span id="imperial"><a>Imperial</a></span>
-    </div>
-  </div>
-</div>
-</body>
+      </div>
 
-<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js'></script>
-<script src="js/index.js"></script>
 
-    
-    
-    
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js'></script>
+  <script src="js/index.js"></script>
+      
   </body>
+
 </html>
