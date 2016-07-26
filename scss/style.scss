@@ -10,22 +10,18 @@ body{
   background: $main-color;
 }
 
+
 .jumbotron {
   margin: auto;
   margin-top: 25px;
   width: 50%;
-  background: $secondary-color;
- }
+  background: white; }
 
-.mainText{
-  font-size: 25px; }
+.mainText {
+  font-size: 20px; }
 
-.subText{
-  font-size: 15px;
-}
-
-#userSearch {
-}
+.subText {
+  font-size: 15px; }
 
 .system {
   display: inline-block; }
@@ -35,3 +31,7 @@ body{
 
 .system a {
   margin-right: 5px; }
+
+#location {
+	width: 75px;
+}

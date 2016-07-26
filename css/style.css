@@ -10,7 +10,7 @@ body {
   background: white; }
 
 .mainText {
-  font-size: 25px; }
+  font-size: 20px; }
 
 .subText {
   font-size: 15px; }
@@ -23,5 +23,8 @@ body {
 
 .system a {
   margin-right: 5px; }
+
+#location {
+  width: 75px; }
 
 /*# sourceMappingURL=style.css.map */
