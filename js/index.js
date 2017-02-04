@@ -73,6 +73,7 @@ function processData(data){
   document.getElementById("image").innerHTML = img;
 
   $("#metric").addClass("selected");
+  $("#imperial").removeClass("selected");
 }
 
 
