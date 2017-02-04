@@ -1,7 +1,7 @@
 
 getLocation();
-document.getElementById('metric').addEventListener("click",convert);
-document.getElementById('imperial').addEventListener("click",convert);
+document.getElementById('metric').addEventListener("click",convertToMetric);
+document.getElementById('imperial').addEventListener("click",convertToImperial);
 document.getElementById('search').addEventListener("click",function(){
   getDataCity(document.getElementById('location').value);
   });
@@ -32,10 +32,10 @@ function error(err) {
 
 
 function getData(){
-  urlBuilder = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?units=metric&" +  //address, crossorigin for https to http
+  urlBuilder = "http://api.openweathermap.org/data/2.5/weather?units=metric&" +  //address, crossorigin for https to http
                 'lat=' + latVar +  // lat coordinates
                 '&lon=' + lonVar + // lon coordinates 
-                "&appid=0702c0948da3d42103f274acca388106";
+                "&appid=1efd58196142c6be9e2347a892affe5d";
 
 $.getJSON(urlBuilder,function(data){processData(data);});
   
@@ -44,9 +44,9 @@ $.getJSON(urlBuilder,function(data){processData(data);});
 
 
 function getDataCity(location){
-    urlBuilder = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?units=metric&q=" +  //address, crossorigin for https to http
+    urlBuilder = "http://api.openweathermap.org/data/2.5/weather?units=metric&q=" +  //address, crossorigin for https to http
                   location +
-                  "&appid=0702c0948da3d42103f274acca388106";
+                  "&appid=1efd58196142c6be9e2347a892affe5d";
 
   $.getJSON(urlBuilder,function(data){processData(data);});
 }
@@ -62,8 +62,6 @@ function processData(data){
   windKPH = (data["wind"]["speed"] * 1.60934).toFixed(2) + ' kph';
   img = "<img src='http://openweathermap.org/img/w/" + data["weather"][0]["icon"] + ".png'></img>";
   descr = capFirstLetter(data["weather"][0]["description"]);
-
-  isMetric = true;
   $("#error").remove();
   $("#system").removeClass("invisible");
 
@@ -91,19 +89,15 @@ function processData(data){
 
 
 
-function convert(){
-  if (isMetric == true){
+function convertToImperial(){
     document.getElementById("wind").innerHTML= windMPH;
     document.getElementById("temp").innerHTML= tempF;
       $("#metric").removeClass("selected");
       $("#imperial").addClass("selected");
-    isMetric = false;
-  }
-  else{
+}
+function convertToMetric(){
     document.getElementById("wind").innerHTML= windKPH;
     document.getElementById("temp").innerHTML= tempC;
       $("#imperial").removeClass("selected");
       $("#metric").addClass("selected");
-    isMetric = true;
-  }
-};
+}
